@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FaCheckCircle, FaPlay } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import NextImage from "next/image";
 
 interface AboutSectionProps {
   title?: string;
@@ -52,22 +53,17 @@ export const AboutSection = ({ data }: { data: any }) => {
               </div>
             </div>
 
-            <div
-              className="relative overflow-hidden h-[400px]"
-              style={{
-                backgroundImage: `url(${
-                  data?.imagevideo?.node?.mediaItemUrl || "/image12.png"
-                })`,
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat"
-              }}
-              role="img"
-              aria-label="About Image"
-            >
+            <div className="relative overflow-hidden h-[400px]">
+              <NextImage
+                src={data?.imagevideo?.node?.mediaItemUrl || "/image12.png"}
+                alt="About Image"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
               <div className="group">
                 <button
-                  className=" duration-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[73px] h-[73px] rounded-full border-2 border-white  flex items-center justify-center transition-all group-hover:border-[#fdc800]"
+                  className="duration-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[73px] h-[73px] rounded-full border-2 border-white flex items-center justify-center transition-all group-hover:border-[#fdc800] z-10"
                   onClick={openModal}
                   aria-label="Play video"
                 >

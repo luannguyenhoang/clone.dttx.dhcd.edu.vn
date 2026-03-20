@@ -73,6 +73,7 @@ export const InstructorCarousel = ({ data }: { data?: any }) => {
                     alt={`Ảnh giảng viên: ${instructor?.name || "Instructor"}`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                 </div>
                 <div className="py-4">
