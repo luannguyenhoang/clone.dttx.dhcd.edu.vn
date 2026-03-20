@@ -11,11 +11,13 @@ import { useEffect, useState } from "react";
 export default function TrainingIndustryDetailLayout({
   courseData,
   nganhHocData,
-  banner
+  banner,
+  sidebarData
 }: {
   courseData?: any;
   nganhHocData?: any;
   banner?: React.ReactNode;
+  sidebarData?: any[];
 }) {
   const [activeTab, setActiveTab] = useState("overview");
   const [showPopup, setShowPopup] = useState(false);
@@ -57,6 +59,8 @@ export default function TrainingIndustryDetailLayout({
           showAllMajor={false}
           showRegister={true}
           showForm={false}
+          sidebarData={sidebarData}
+          videoData={nganhHocData?.video}
         >
           <>
             <CourseContent

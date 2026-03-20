@@ -31,7 +31,9 @@ export const SliderBar = ({
   showForm = false,
   showNewPost = false,
   showSearchBar = false,
-  onSearch
+  onSearch,
+  sidebarData,
+  videoData
 }: {
   showSearch?: boolean;
   showCustomSearch?: boolean;
@@ -42,6 +44,8 @@ export const SliderBar = ({
   showNewPost?: boolean;
   showSearchBar?: boolean;
   onSearch?: (term: string) => void;
+  sidebarData?: any[];
+  videoData?: any;
 }) => {
   const [searchInput, setSearchInput] = useState("");
 
@@ -89,7 +93,9 @@ export const SliderBar = ({
       )}
       {showSearchBar && <SearchBar placeholder="Tìm kiếm ..." />}
       {showVideoMajorDetail && <VideoMajorDetail />}
-      {showRegister && <Register />}
+      {showRegister && (
+        <Register sidebarData={sidebarData} videoData={videoData} />
+      )}
       {showAllMajor && <AllMajor />}
       {showForm && <Form />}
       {showNewPost && <NewPost />}

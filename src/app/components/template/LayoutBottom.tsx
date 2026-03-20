@@ -14,7 +14,9 @@ export const LayoutBottom = ({
   showForm = false,
   showNewPost = false,
   onSearch,
-  showSearchBar = false
+  showSearchBar = false,
+  sidebarData,
+  videoData
 }: {
   children: ReactNode;
   m?: string;
@@ -26,6 +28,8 @@ export const LayoutBottom = ({
   showForm?: boolean;
   showNewPost?: boolean;
   showSearchBar?: boolean;
+  sidebarData?: any[];
+  videoData?: any;
 }) => {
   return (
     <DefaultLayout>
@@ -41,6 +45,8 @@ export const LayoutBottom = ({
             showRegister={showRegister}
             showForm={showForm}
             showNewPost={showNewPost}
+            sidebarData={sidebarData}
+            videoData={videoData}
           />
         </div>
       </div>

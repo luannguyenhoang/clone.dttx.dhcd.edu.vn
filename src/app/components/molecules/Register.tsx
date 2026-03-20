@@ -2,10 +2,8 @@
 
 import { GET_ALL_NGANH_HOC } from "@/app/api/graphQL/getAllNganhHoc";
 import { GET_SIDE_BAR } from "@/app/api/graphQL/getSideBar";
-import { FormWrapper } from "@/app/components/molecules/FormWrapper";
 import { getData } from "@/lib/getData";
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 import { FaPlay } from "react-icons/fa";
 import { VideoModal } from "./VideoModal";
 import FormPopup from "./FormPopup";
@@ -15,15 +13,31 @@ type SidebarItem = {
   text: string;
 };
 
-export const Register = () => {
+export const Register = ({
+  sidebarData,
+  videoData
+}: {
+  sidebarData?: SidebarItem[];
+  videoData?: any;
+}) => {
   const [showPopup, setShowPopup] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [sidebarItems, setSidebarItems] = useState<SidebarItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [sidebarItems, setSidebarItems] = useState<SidebarItem[]>(
+    sidebarData || []
+  );
+  const [loading, setLoading] = useState(!sidebarData);
   const [showModal, setShowModal] = useState(false);
 
-  const [video, setVideo] = useState<any>(null);
+  const [video, setVideo] = useState<any>(videoData || null);
+
   useEffect(() => {
+    if (sidebarData && videoData) {
+      setSidebarItems(sidebarData);
+      setVideo(videoData);
+      setLoading(false);
+      return;
+    }
+
     const fetchSidebarData = async () => {
       try {
         const response = await getData(GET_SIDE_BAR);
@@ -42,7 +56,7 @@ export const Register = () => {
     };
 
     fetchSidebarData();
-  }, []);
+  }, [sidebarData, videoData]);
 
   useEffect(() => {
     setMounted(true);
