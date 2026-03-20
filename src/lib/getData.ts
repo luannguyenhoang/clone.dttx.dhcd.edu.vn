@@ -25,7 +25,7 @@ const errorLink = onError(({ networkError, graphQLErrors }) => {
 const httpLink = new HttpLink({
   uri:
     process.env.NEXT_PUBLIC_API_GRAPHQL_DTTXDHCD ||
-    "http://10.10.92.8:8080/graphql"
+    "https://admindttx.dhcongdoan.vn/graphql"
 });
 
 export const apolloClient = new ApolloClient({
